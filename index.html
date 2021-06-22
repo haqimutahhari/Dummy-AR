@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <title>AR Candi Borobudur</title>
+    <style>
+        body{
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <a-scene
+        vr-mode-ui="enabled: false;"
+        embedded arjs = "sourceType:webcam;  trackingMethod: best; 
+        detectionMode:mono_and_matrix;matrixCodeType:3x3_PARITY65; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
+        renderer ="antialias: true;logarithmicDepthBuffer: true; ">
+
+        <a-asset-item id="stupa" src="stupa.gltf"></a-asset-item>
+
+        <a-marker type="barcode" value="5"
+        smooth="true"
+        smoothCount="10">
+        
+            <a-entity gltf-model="#stupa"
+            rotation="-90 0 0"
+            position ="0 -2 0"
+            scale="0.5 0.5 0.5"></a-entity>
+
+            <a-entity 
+            text="value:Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit veritatis sapiente vero ea, nam fugiat omnis expedita qui aliquam deleniti quibusdam perferendis aut molestiae placeat a repudiandae praesentium doloribus sequi;width:4.5;"
+            position ="-4.02 -1.88 -0.749"
+            rotation="-90 0 0"
+            
+            ></a-entity>
+
+        </a-marker>
+        <a-entity 
+        camera arjs look control
+        ></a-entity>
+        
+    </a-scene>
+    
+</body>
+</html>
